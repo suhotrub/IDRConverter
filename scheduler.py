@@ -11,7 +11,7 @@ def gatherDataAndPutToStorage():
 
 def scheduleTask():
 	sched = BackgroundScheduler(daemon=True)
-	sched.add_job(func=gatherDataAndPutToStorage, trigger="interval", minutes=1)
+	sched.add_job(func=gatherDataAndPutToStorage, trigger="interval", minutes=60)
 	sched.start()
 	atexit.register(lambda: sched.shutdown())
 
