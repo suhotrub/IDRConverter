@@ -1,7 +1,7 @@
 import csv
 import time
 import os
-path = "/database.csv"    
+path = "database.csv"    
 
 def createDatabase():
     if os.path.isfile(path):
