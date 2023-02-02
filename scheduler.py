@@ -13,10 +13,11 @@ def gatherDataAndPutToStorage():
 	print(rates[1], file=sys.stderr)
 
 def scheduleTask():
-	print('This is error output', file=sys.stderr)
-	print('This is standard output', file=sys.stdout)
-	sched = BackgroundScheduler(daemon=True)
-	sched.add_job(func=gatherDataAndPutToStorage, trigger="interval", minutes=1)
-	sched.start()
-	atexit.register(lambda: sched.shutdown())
+	if not app.debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+		print('This is error output', file=sys.stderr)
+		print('This is standard output', file=sys.stdout)
+		sched = BackgroundScheduler(daemon=True)
+		sched.add_job(func=gatherDataAndPutToStorage, trigger="interval", minutes=1)
+		sched.start()
+		atexit.register(lambda: sched.shutdown())
 
