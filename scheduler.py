@@ -7,7 +7,10 @@ import atexit
 def gatherDataAndPutToStorage():
 	print('scheduling', file=sys.stderr)
 	rates = calculateRates()
+	print('loaded', file=sys.stderr)
 	writeToDatabase(rates[1])
+	print('wrote', file=sys.stderr)
+	print(rates[1], file=sys.stderr)
 
 def scheduleTask():
 	print('This is error output', file=sys.stderr)
