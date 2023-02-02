@@ -11,6 +11,7 @@ def gatherDataAndPutToStorage():
 	sys.stderr.write("wrote.\n")
 
 def scheduleTask():
+	sys.stderr.write("hithere.\n")
 	sched = BackgroundScheduler(daemon=True)
 	sched.add_job(gatherDataAndPutToStorage,'interval',minutes=60)
 	sched.start()
