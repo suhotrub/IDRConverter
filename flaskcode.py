@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from IDRConverter.ratescalculator import calculateRates
 from IDRConverter.scheduler import scheduleTask
 from prettytable import PrettyTable
+import sys 
 
 app = Flask(__name__, static_url_path='',static_folder='static',template_folder='template')
 
