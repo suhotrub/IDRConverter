@@ -22,4 +22,4 @@ def main():
 	return variablesTable.get_html_string() + "<br><br>" + resultTable.get_html_string() + "<br>" + render_template("template.html")
 
 def startBackend():
-	app.run()
+	app.run(use_reloader=False)
