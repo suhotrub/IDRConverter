@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from ratescalculator import calculateRates
+from IDRConverter.ratescalculator import calculateRates
 from prettytable import PrettyTable
 
 app = Flask(__name__, static_url_path='',static_folder='static',template_folder='template')

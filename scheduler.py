@@ -1,5 +1,5 @@
-from databasecode import writeToDatabase
-from ratescalculator import calculateRates
+from IDRConverter.databasecode import writeToDatabase
+from IDRConverter.ratescalculator import calculateRates
 from apscheduler.schedulers.background import BackgroundScheduler
 
 def gatherDataAndPutToStorage():
