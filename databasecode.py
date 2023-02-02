@@ -1,7 +1,7 @@
 import csv
 import time
 import os
-path = "static/database.csv"    
+path = "/database.csv"    
 
 def createDatabase():
     if os.path.isfile(path):
@@ -13,8 +13,6 @@ def createDatabase():
 
 
 def writeToDatabase(table):
-    if not os.path.isfile(path):
-        return
     with open(path, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([
