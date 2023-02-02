@@ -1,0 +1,52 @@
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+d3.csv('/database.csv')
+  .then(makeChart);
+
+function makeChart(database) {
+  console.log(database);
+  var keys = Object.keys(database[0]);
+  keys.shift();
+
+  const datasets = keys.map(function(key) {
+    return {
+      label: key,
+      data: database.map(function(row) { return row[key] })
+    }
+  });
+
+  const labels = database.map(function(row) { return new Date(parseInt(row['Time'])).toLocaleString('en-GB') });
+  const data = {
+    labels: labels,
+    datasets: datasets
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+      responsive: true,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
+      stacked: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Nihuya sebe vot eto grafik vi chto programmist'
+        }
+      },
+    },
+  };
+  var chart = new Chart('myChart', config);
+}
+
+
+</script>
+ 
