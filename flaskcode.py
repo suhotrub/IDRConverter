@@ -25,22 +25,22 @@ def main():
 
 @app.before_first_request
 def activate_job():
-    scheduleTask()
+	scheduleTask()
 
 def start_runner():
-    def start_loop():
-        not_started = True
-        while not_started:
-            try:
-                r = requests.get('http://127.0.0.1:5000/')
-                if r.status_code == 200:
-	            	print('Server started', file=sys.stderr)
-                    not_started = False
-            except:
-            	print('Server not yet started', file=sys.stderr)
-            time.sleep(2)
-    thread = threading.Thread(target=start_loop)
-    thread.start()
+	def start_loop():
+		not_started = True
+		while not_started:
+			try:
+				r = requests.get('http://127.0.0.1:5000/')
+				if r.status_code == 200:
+					print('Server started', file=sys.stderr)
+					not_started = False
+			except:
+				print('Server not yet started', file=sys.stderr)
+			time.sleep(2)
+	thread = threading.Thread(target=start_loop)
+	thread.start()
 
 def startBackend():
 	start_runner()
