@@ -3,15 +3,17 @@ from IDRConverter.ratescalculator import calculateRates
 from apscheduler.schedulers.background import BackgroundScheduler
 import sys
 
+sys.stdout = open('output.logs', 'w')
+
 def gatherDataAndPutToStorage():
-	sys.stderr.write("hello.\n")
+	print("hello.")
 	rates = calculateRates()
-	sys.stderr.write("loaded.\n")
+	print("loaded.")
 	writeToDatabase(rates[1])
-	sys.stderr.write("wrote.\n")
+	print("wrote.")
 
 def scheduleTask():
-	sys.stderr.write("hithere.\n")
+	print("hithere.")
 	sched = BackgroundScheduler(daemon=True)
 	sched.add_job(gatherDataAndPutToStorage,'interval',minutes=60)
 	sched.start()
