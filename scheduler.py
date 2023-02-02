@@ -3,6 +3,7 @@ from IDRConverter.ratescalculator import calculateRates
 from apscheduler.schedulers.background import BackgroundScheduler
 import sys
 import atexit
+import os
 
 def gatherDataAndPutToStorage():
 	print('scheduling', file=sys.stderr)
@@ -13,7 +14,7 @@ def gatherDataAndPutToStorage():
 	print(rates[1], file=sys.stderr)
 
 def scheduleTask():
-	if not app.debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+	if  os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
 		print('This is error output', file=sys.stderr)
 		print('This is standard output', file=sys.stdout)
 		sched = BackgroundScheduler(daemon=True)
