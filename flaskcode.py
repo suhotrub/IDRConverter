@@ -34,9 +34,10 @@ def start_runner():
             try:
                 r = requests.get('http://127.0.0.1:5000/')
                 if r.status_code == 200:
+	            	print('Server started', file=sys.stderr)
                     not_started = False
             except:
-                print('Server not yet started')
+            	print('Server not yet started', file=sys.stderr)
             time.sleep(2)
     thread = threading.Thread(target=start_loop)
     thread.start()
