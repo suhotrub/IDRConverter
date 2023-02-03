@@ -2,7 +2,8 @@ from flask import Flask, render_template
 from IDRConverter.ratescalculator import calculateRates
 from IDRConverter.scheduler import scheduleTask
 from prettytable import PrettyTable
-import sys 
+import sys
+import os
 
 app = Flask(__name__, static_url_path='',static_folder='static',template_folder='template')
 
@@ -26,9 +27,6 @@ def main():
 
 @app.before_first_request
 def activate_job():
-	print('Scheduling task', file=sys.stderr)
-	scheduleTask()
-
-def startBackend():
-	print('Starting app', file=sys.stderr)
-	app.run(use_reloader=False)
+	if os.environ.get('WERKZEUG_RUN_MAIN') != 'true':
+	    print('Scheduling task', file=sys.stderr)
+		scheduleTask()	

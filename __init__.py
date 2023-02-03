@@ -1,7 +1,25 @@
 from IDRConverter.flaskcode import startBackend, app
 from IDRConverter.databasecode import createDatabase
+import sys
+
+def start_runner():
+    def start_loop():
+        not_started = True
+        while not_started:
+            print('In start loop', file=sys.stderr)
+            try:
+                r = requests.get('http://127.0.0.1:5000/')
+                if r.status_code == 200:
+                    print('Server started, quiting start_loop', file=sys.stderr)
+                    not_started = False
+                print(r.status_code)
+            except:
+                print('Server not yet started', file=sys.stderr)
+            time.sleep(2)
+
+    print('Started runner', file=sys.stderr)
+    thread = threading.Thread(target=start_loop)
+    thread.start()
 
 createDatabase()
-
-if __name__ == "__main__":
-	startBackend()
+start_runner()

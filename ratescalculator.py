@@ -36,7 +36,7 @@ async def parseUnionPay(session, date = date.today()):
           break
       return idr
   except:
-    return await parseUnionPay(session, today - timedelta(days = 1))
+    return await parseUnionPay(session, date - timedelta(days = 1))
 
 async def parseTinkoffInvest(session, ticker):
   async with session.get("https://www.tinkoff.ru/api/trading/currency/get?ticker="+ticker) as response:
