@@ -1,4 +1,4 @@
-from IDRConverter.flaskcode import startBackend, app
+from IDRConverter.flaskcode import app
 from IDRConverter.databasecode import createDatabase
 import sys
 
