@@ -7,7 +7,7 @@ def createDatabase():
     if os.path.isfile(path):
         return
 
-    with open(path, 'w', newline='') as file:
+    with open(path, 'w+', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Time", "Stock price","Tinkoff CNY","Korona GEL USDT", "Korona GEL Credo USDT", "Tinkoff USDT", "Unistream GEL USDT", "TBC USD IDR"])
 
