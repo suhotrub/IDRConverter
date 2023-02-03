@@ -28,5 +28,5 @@ def main():
 @app.before_first_request
 def activate_job():
 	if os.environ.get('WERKZEUG_RUN_MAIN') != 'true':
-	    print('Scheduling task', file=sys.stderr)
+		print('Scheduling task', file=sys.stderr)
 		scheduleTask()	

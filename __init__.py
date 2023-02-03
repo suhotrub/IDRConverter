@@ -3,6 +3,7 @@ from IDRConverter.databasecode import createDatabase
 import sys
 
 def start_runner():
+	print('Trying to start server', file=sys.stderr)
     def start_loop():
         not_started = True
         while not_started:
