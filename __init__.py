@@ -2,6 +2,7 @@ from IDRConverter.flaskcode import app
 from IDRConverter.databasecode import createDatabase
 import sys
 import threading
+import time
 
 def start_runner():
 	print('Trying to start server', file=sys.stderr)
